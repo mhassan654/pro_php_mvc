@@ -1,7 +1,13 @@
 <?php
-require_once __DIR__ .'/../ve'
+require_once __DIR__ .'./vendor/autoload.php';
 $requestMethod = $_SERVER['REQUEST_METHOD'] ?? 'GET';
 $requestPath = $_SERVER['REQUEST_URI'] ?? '/';
+
+function redirectForeverTo($path)
+{
+    header('Location: {$path}', $replace = true, $code =301);
+    exit;
+}
 
 if($requestMethod === 'GET' and $requestPath === '/'){
     print <<<HTML
@@ -16,5 +22,8 @@ HTML;
 //    header('Location: /', $replace = true, $code =301);
     redirectForeverTo('/');
     exit;
+
+}else{
     include(__DIR__.'/includes/404.php');
+
 }
