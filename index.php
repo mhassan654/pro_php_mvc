@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ .'/../ve'
 $requestMethod = $_SERVER['REQUEST_METHOD'] ?? 'GET';
 $requestPath = $_SERVER['REQUEST_URI'] ?? '/';
 

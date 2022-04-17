@@ -13,7 +13,8 @@
     "serve": "php -S 127.0.0.1:8000 -t public"
   },
   "require": {
-    "filp/whoops": "^2.14"
+    "filp/whoops": "^2.14",
+    "vlucas/phpdotenv": "^5.4"
   },
   "autoload": {
     "psr-4": {
