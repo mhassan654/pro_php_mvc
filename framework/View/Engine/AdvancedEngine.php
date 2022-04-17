@@ -15,7 +15,6 @@ class AdvancedEngine implements Engine
 
     public function render(View $view): string
     {
-        // TODO: Implement render() method.
         $hash = md5($view->path);
         $folder = __DIR__ .'/../../../storage/framework/views';
         $cached = realpath("$folder/{$hash}.php");
@@ -26,7 +25,7 @@ class AdvancedEngine implements Engine
             file_put_contents($cached,$content);
         endif;
 
-        extract($view->path);
+        extract($view->data);
 
         ob_start();
         include($cached);
@@ -43,10 +42,11 @@ class AdvancedEngine implements Engine
             return $contents;
     }
 
-    public function setManager(Manager $manager): static
-    {
-        // TODO: Implement setManager() method.
-    }
+    // public function setManager(Manager $manager): static
+    // {
+    //     // TODO: Implement setManager() method.
+    //     return;
+    // }
 
     protected function compile(string $template): string
     {

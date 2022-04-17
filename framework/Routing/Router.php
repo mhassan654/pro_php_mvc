@@ -14,13 +14,13 @@ class Router
     protected  $handler;
     protected ?string $name = null;
 
-    public function __construct( string $method,string $path,string $handler)
-    {
-        $this->method = $method;
-        $this->path = $path;
-        $this->handler = $handler;
+    // public function __construct( string $method,string $path, $handler)
+    // {
+    //     $this->method = $method;
+    //     $this->path = $path;
+    //     $this->handler = $handler;
 
-    }
+    // }
 
     public function route(string $name, array $parameters=[]): string
     {
@@ -84,10 +84,12 @@ class Router
                 return $matching->dispatch();
             }catch(\Throwable $e)
             {
+                if(isset($_ENV['APP_ENV']) && $_ENV['APP_ENV'] === 'dev'):
                 $whoops = new Run();
                 $whoops->pushHandler(new PrettyPageHandler());
                 $whoops->register();
                 throw $e;
+                endif;
 
                 return $this->dispatchError();
             }
@@ -114,11 +116,11 @@ class Router
         return null;
     }
 
-    private function paths():array
+    private function paths(): array
     {
         $paths = [];
-        foreach($paths->routes as $route){
-            $paths[] = $route->paths();
+        foreach($this->routes as $route){
+            $paths[] = $route->path();
         }
         return $paths;
 
