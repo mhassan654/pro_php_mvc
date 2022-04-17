@@ -1,18 +1,22 @@
 <?php
 use Framework\Routing\Router;
+
 return function(Router $router){
     $router->add(
         'GET','/',
-        fn()=>'heelo saava',
+        // fn()=>'heelo saava',
+        fn()=>view('home',['number'=>42]),
     );
 
     $router->add(
         'GET','/old-home',
-        fn()=>$router->redirect('/'),
+        fn() => $router->redirect('/'),
     );
     $router->add(
         'GET', 'has-server-error',
-        fn()=>throw new Exception();
+        // fn() => throw new Exception();
+        fn()=> throw new Exception()
+        
     );
 
     $router->add(

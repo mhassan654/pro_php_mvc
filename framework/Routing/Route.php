@@ -11,6 +11,13 @@ class Route
     protected string $path;
     private $handler;
 
+    public function __construct(string $method, string $path, callable $handler)
+    {
+        $this->method = $method;
+        $this->path = $path;
+        $this->handler = $handler;
+    }
+
     public function parameters():array
     {
         return $this->parameters;
@@ -112,6 +119,16 @@ class Route
         // remove multiple '/' in a row
         $path = preg_replace('/[\/]{2,}/','/',$path);
         return $path;
+    }
+
+    public function name(string $name = null): mixed
+    {
+        if($name){
+            $this->name = $name;
+            return $this;
+        }
+
+        return $this->name;
     }
 
 }

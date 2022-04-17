@@ -10,7 +10,8 @@ class Router
     protected array $errorHandler = [];
     protected string $method;
     protected string $path;
-    protected $handler;
+    protected  $handler;
+    protected ?string $name = null;
 
     public function __construct( string $method,string $path,string $handler)
     {
@@ -29,7 +30,7 @@ class Router
                 $finds =[];
                 $replaces=[];
 
-                foreach($this->parameters as $key => $values){
+                foreach($this->parameters as $key => $value){
                     // one set for required parameters
                     array_push($finds, "{{$key}}");
                     array_push($replaces, $value);
@@ -43,11 +44,23 @@ class Router
                 $path = str_replace($finds, $replaces, $path);
 
                 //remove any optional parameters not provided
-                $path = preg_replace('#{[^}]+#','',$path);
+                $path = preg_replace('#{[^}]+}#','',$path);
+
+                // we should think about warnign if a requuried parameter is not 
+                // provided...
+                return $path;
             }
 
         }
+        throw new \Exception('no route with that name');
 
+    }
+
+    
+    public function add(string $method, string $path, callable $handler): Route
+    {
+        $route = $this->routes[] = new Route($method, $path, $handler);
+        return $route;
     }
 
     public function dispatch()
@@ -75,11 +88,22 @@ class Router
 
         // if the path is defined for a different method
         //we can throw a unique error page for it
-        if(in_array($requestPath, $path)){
+        if(in_array($requestPath, $paths)){
             return $this->dispatchNotAllowed();
         }
         return $this->dispatchNotFound();
 
+    }
+
+     private function match(string $method, string $path): ?Route
+    {
+        foreach($this->routes as $route){
+            if($route->matches($method, $path))
+            {
+                return $route;
+            }
+        }
+        return null;
     }
 
     private function paths():array
@@ -92,16 +116,7 @@ class Router
 
     }
 
-    private function match(string $method, string $path): ?Route
-    {
-        foreach($this->routes as $route){
-            if($route->matches($method, $path))
-            {
-                return $route;
-            }
-        }
-        return null;
-    }
+   
 
     public function errorHandler(int $code, callable $handler)
     {
@@ -110,19 +125,19 @@ class Router
 
     private function dispatchNotFound()
     {
-        $this->errorHandlers[404] ?? = fn()=>"not found";
+        $this->errorHandlers[404] ??= fn() =>"not found";
         return $this->errorHandlers[404]();
     }
 
-    private function dispatchNotAllowed()
+    public function dispatchNotAllowed()
     {
-        $this->errorHandlers[400] ?? = fn()=>"not allowed";
+        $this->errorHandlers[400] ??= fn()=>"not allowed";
         return $this->errorHandlers[400]();
     }
 
     private function dispatchError()
     {
-        $this->errorHandlers[500] ?? = fn()=>"server error";
+        $this->errorHandlers[500] ??= fn()=>"server error";
         return $this->errorHandlers[500]();
     }
 
@@ -131,6 +146,13 @@ class Router
         header("Location: {$path}", $replace=true, $code=301);
         exit;
     }
+
+    public function current(): ?Route
+    {
+        return $this->current;
+    }
+
+    
 
 
 }
