@@ -62,9 +62,9 @@ class Route
 
 //                if it's an optional parameter, we make the
 //                following slash optional as well'
-                if (str_ends_with($found[1],'?')){
+                if (str_ends_with($found[1],'?')):
                     return '([^/]*)(?:/?)';
-                }
+                endif;
                 return '([^/]+)/';
             },
             $pattern,
