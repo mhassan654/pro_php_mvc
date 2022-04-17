@@ -23,25 +23,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d9d36e8c-e9dd-4055-9d74-4f361d2fcc6e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/routes.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/framework/Routing/Router.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/autoload.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/composer/ClassLoader.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/composer/InstalledVersions.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/composer/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/composer/autoload_real.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/pro_php_mvc.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pro_php_mvc.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/framework/Routing/Route.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/Routing/Router.php" beforeDir="false" afterPath="$PROJECT_DIR$/framework/Routing/Router.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +76,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="build.tools" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -104,7 +89,10 @@
       <updated>1650136519885</updated>
       <workItem from="1650136521841" duration="1984000" />
       <workItem from="1650138589103" duration="615000" />
-      <workItem from="1650139959147" duration="1631000" />
+      <workItem from="1650139959147" duration="2625000" />
+      <workItem from="1650176116982" duration="4158000" />
+      <workItem from="1650180526723" duration="263000" />
+      <workItem from="1650180854058" duration="1296000" />
     </task>
     <servers />
   </component>
@@ -121,11 +109,20 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="517" y="18" key="#CLI_Interpreters" timestamp="1650181570706">
+      <screen x="0" y="0" width="1366" height="720" />
+    </state>
+    <state x="517" y="18" key="#CLI_Interpreters/0.0.1366.720@0.0.1366.720" timestamp="1650181570706" />
+    <state x="780" y="42" key="#com.intellij.ide.util.MemberChooser" timestamp="1650179690110">
+      <screen x="0" y="0" width="1366" height="720" />
+    </state>
+    <state x="780" y="42" key="#com.intellij.ide.util.MemberChooser/0.0.1366.720@0.0.1366.720" timestamp="1650179690110" />
     <state x="582" y="96" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1650136751003">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
@@ -134,17 +131,21 @@
       <screen x="0" y="0" width="1366" height="720" />
     </state>
     <state x="766" y="272" width="447" height="265" key="ComposerInitDialogKey/0.0.1366.720@0.0.1366.720" timestamp="1650140501933" />
-    <state x="772" y="83" key="NewPhpClassDialog" timestamp="1650140041990">
+    <state x="772" y="83" key="NewPhpClassDialog" timestamp="1650142441624">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
-    <state x="772" y="83" key="NewPhpClassDialog/0.0.1366.720@0.0.1366.720" timestamp="1650140041990" />
-    <state x="736" y="283" key="NewPhpFileDialog" timestamp="1650141409680">
+    <state x="772" y="83" key="NewPhpClassDialog/0.0.1366.720@0.0.1366.720" timestamp="1650142441624" />
+    <state x="736" y="283" key="NewPhpFileDialog" timestamp="1650142415525">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
-    <state x="736" y="283" key="NewPhpFileDialog/0.0.1366.720@0.0.1366.720" timestamp="1650141409680" />
-    <state x="368" y="5" key="SettingsEditor" timestamp="1650140160293">
+    <state x="736" y="283" key="NewPhpFileDialog/0.0.1366.720@0.0.1366.720" timestamp="1650142415525" />
+    <state x="62" y="10" key="SettingsEditor" timestamp="1650182162421">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
-    <state x="368" y="5" key="SettingsEditor/0.0.1366.720@0.0.1366.720" timestamp="1650140160293" />
+    <state x="62" y="10" key="SettingsEditor/0.0.1366.720@0.0.1366.720" timestamp="1650182162421" />
+    <state x="638" y="41" width="672" height="678" key="search.everywhere.popup" timestamp="1650179675789">
+      <screen x="0" y="0" width="1366" height="720" />
+    </state>
+    <state x="638" y="41" width="672" height="678" key="search.everywhere.popup/0.0.1366.720@0.0.1366.720" timestamp="1650179675789" />
   </component>
 </project>
