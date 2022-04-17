@@ -3,7 +3,8 @@
 
 namespace Framework\Routing;
 use Exception;
-
+use Whoops\Handler\PrettyPageHandler;
+use Whoops\Run;
 
 class Router
 {
@@ -75,6 +76,7 @@ class Router
         $matching = $this->matchAll($requestMethod, $requestPath);
 
         if($matching){
+            $this->current = $matching;
             try{
                 // this action could throw an exception
                 // so catch it and display the global error
@@ -82,6 +84,11 @@ class Router
                 return $matching->dispatch();
             }catch(\Throwable $e)
             {
+                $whoops = new Run();
+                $whoops->pushHandler(new PrettyPageHandler());
+                $whoops->register();
+                throw $e;
+
                 return $this->dispatchError();
             }
         }
@@ -89,6 +96,7 @@ class Router
         // if the path is defined for a different method
         //we can throw a unique error page for it
         if(in_array($requestPath, $paths)){
+
             return $this->dispatchNotAllowed();
         }
         return $this->dispatchNotFound();
@@ -115,7 +123,6 @@ class Router
         return $paths;
 
     }
-
    
 
     public function errorHandler(int $code, callable $handler)
@@ -151,6 +158,7 @@ class Router
     {
         return $this->current;
     }
+
 
     
 

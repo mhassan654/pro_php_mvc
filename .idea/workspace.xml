@@ -23,11 +23,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d9d36e8c-e9dd-4055-9d74-4f361d2fcc6e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/framework/View/Engine/AdvancedEngine.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Components/ProductComponent.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/framework/Routing/Router.php" beforeDir="false" afterPath="$PROJECT_DIR$/framework/Routing/Router.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/View/Engine/PhpEngine.php" beforeDir="false" afterPath="$PROJECT_DIR$/framework/View/Engine/PhpEngine.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/View/Manager.php" beforeDir="false" afterPath="$PROJECT_DIR$/framework/View/Manager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_real.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_real.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +59,8 @@
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/vendor/filp/whoops" />
     </include_path>
   </component>
   <component name="ProjectId" id="27tPgTggBqAzU6QySMwLADSg2vA" />
@@ -94,7 +102,7 @@
       <workItem from="1650176116982" duration="4158000" />
       <workItem from="1650180526723" duration="263000" />
       <workItem from="1650180854058" duration="4714000" />
-      <workItem from="1650189292829" duration="2731000" />
+      <workItem from="1650189292829" duration="3973000" />
     </task>
     <servers />
   </component>
@@ -141,10 +149,10 @@
       <screen x="0" y="0" width="1366" height="720" />
     </state>
     <state x="766" y="272" width="447" height="265" key="ComposerInitDialogKey/0.0.1366.720@0.0.1366.720" timestamp="1650140501933" />
-    <state x="772" y="83" key="NewPhpClassDialog" timestamp="1650195649544">
+    <state x="772" y="83" key="NewPhpClassDialog" timestamp="1650199308977">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
-    <state x="772" y="83" key="NewPhpClassDialog/0.0.1366.720@0.0.1366.720" timestamp="1650195649544" />
+    <state x="772" y="83" key="NewPhpClassDialog/0.0.1366.720@0.0.1366.720" timestamp="1650199308977" />
     <state x="736" y="283" key="NewPhpFileDialog" timestamp="1650186958220">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
