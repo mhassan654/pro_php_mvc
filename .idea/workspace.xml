@@ -23,19 +23,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d9d36e8c-e9dd-4055-9d74-4f361d2fcc6e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/framework/View/Engine/HasManager.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/framework/View/Engine/PhpEngine.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/framework/View/View.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/products/layouts/products.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/products/view.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/framework/View/Engine/AdvancedEngine.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/View/Engine/BasicEngine.php" beforeDir="false" afterPath="$PROJECT_DIR$/framework/View/Engine/BasicEngine.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/View/Engine/Engine.php" beforeDir="false" afterPath="$PROJECT_DIR$/framework/View/Engine/Engine.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/Routing/Router.php" beforeDir="false" afterPath="$PROJECT_DIR$/framework/Routing/Router.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/View/Engine/PhpEngine.php" beforeDir="false" afterPath="$PROJECT_DIR$/framework/View/Engine/PhpEngine.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/framework/View/Manager.php" beforeDir="false" afterPath="$PROJECT_DIR$/framework/View/Manager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/helpers.php" beforeDir="false" afterPath="$PROJECT_DIR$/framework/helpers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +94,7 @@
       <workItem from="1650176116982" duration="4158000" />
       <workItem from="1650180526723" duration="263000" />
       <workItem from="1650180854058" duration="4714000" />
-      <workItem from="1650189292829" duration="1451000" />
+      <workItem from="1650189292829" duration="2731000" />
     </task>
     <servers />
   </component>
@@ -133,22 +125,26 @@
       <screen x="0" y="0" width="1366" height="720" />
     </state>
     <state x="780" y="42" key="#com.intellij.ide.util.MemberChooser/0.0.1366.720@0.0.1366.720" timestamp="1650179690110" />
-    <state x="710" y="150" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1650188085211">
+    <state x="710" y="150" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1650195645443">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
-    <state x="710" y="150" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1366.720@0.0.1366.720" timestamp="1650188085211" />
+    <state x="710" y="150" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1366.720@0.0.1366.720" timestamp="1650195645443" />
     <state x="582" y="96" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1650136751003">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
     <state x="582" y="96" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1366.720@0.0.1366.720" timestamp="1650136751003" />
+    <state x="660" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1650195977036">
+      <screen x="0" y="0" width="1366" height="720" />
+    </state>
+    <state x="660" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.720@0.0.1366.720" timestamp="1650195977036" />
     <state x="766" y="272" width="447" height="265" key="ComposerInitDialogKey" timestamp="1650140501933">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
     <state x="766" y="272" width="447" height="265" key="ComposerInitDialogKey/0.0.1366.720@0.0.1366.720" timestamp="1650140501933" />
-    <state x="772" y="83" key="NewPhpClassDialog" timestamp="1650194842675">
+    <state x="772" y="83" key="NewPhpClassDialog" timestamp="1650195649544">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
-    <state x="772" y="83" key="NewPhpClassDialog/0.0.1366.720@0.0.1366.720" timestamp="1650194842675" />
+    <state x="772" y="83" key="NewPhpClassDialog/0.0.1366.720@0.0.1366.720" timestamp="1650195649544" />
     <state x="736" y="283" key="NewPhpFileDialog" timestamp="1650186958220">
       <screen x="0" y="0" width="1366" height="720" />
     </state>

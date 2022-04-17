@@ -8,6 +8,7 @@ use Framework\View\View;
 
 class PhpEngine implements Engine
 {
+    use HasManager;
     // protected string $path;
     // protected ?string $layout;
     // protected string $contents;
@@ -49,8 +50,14 @@ class PhpEngine implements Engine
         return $this;
     }
 
-    protected function escape(string $content): string
+    // protected function escape(string $content): string
+    // {
+    //     return htmlspecialchars($content, ENT_QUOTES);
+    // }
+    public function __call(string $name, $values)
     {
-        return htmlspecialchars($content, ENT_QUOTES);
+        return $this->manager->useMacro($name, ...$values);
     }
+
+
 }

@@ -52,7 +52,7 @@ class Router
             }
 
         }
-        throw new \Exception('no route with that name');
+        throw new Exception('no route with that name');
 
     }
 
@@ -72,7 +72,7 @@ class Router
 
         // this looks through the defined routes and retruns
         // the first that matches the requested method and path
-        $matching = $this->match($requestMethod, $requestPath);
+        $matching = $this->matchAll($requestMethod, $requestPath);
 
         if($matching){
             try{
@@ -95,7 +95,7 @@ class Router
 
     }
 
-     private function match(string $method, string $path): ?Route
+     private function matchAll(string $method, string $path): ?Route
     {
         foreach($this->routes as $route){
             if($route->matches($method, $path))
