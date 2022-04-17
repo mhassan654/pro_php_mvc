@@ -28,7 +28,11 @@ return function(Router $router){
         'GET', '/products/view/{product}',
         function() use ($router){
             $parameters = $router->current()->parameters();
-            return "product is {$parameters['product']}";
+            // return "product is {$parameters['product']}";
+            return view('products/view',[
+                'product'=>$parameters['product'],
+                'scary'=>'<script>alert("bool")</script>',
+            ]);
         },
     );
 
