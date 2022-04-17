@@ -26,7 +26,24 @@ class Router
         {
             if($route->name() === $name)
             {
-                
+                $finds =[];
+                $replaces=[];
+
+                foreach($this->parameters as $key => $values){
+                    // one set for required parameters
+                    array_push($finds, "{{$key}}");
+                    array_push($replaces, $value);
+
+                    // ..and another for optional parameters
+                    array_push($finds, "{{$key}?}");
+                    array_push($replaces, $value);
+                }
+
+                $path = $route->path();
+                $path = str_replace($finds, $replaces, $path);
+
+                //remove any optional parameters not provided
+                $path = preg_replace('#{[^}]+#','',$path);
             }
 
         }
