@@ -28,4 +28,29 @@ if(!function_exists('view'))
 //        return $manager->render($template, $data);
         return $manager->resolve($template, $data);
     }
+
+    if(!function_exists('redirect')):
+        function redirect(string $url)
+        {
+            header("Location: {$url}");
+            exit;
+        }
+    endif;
+
+    if(!function_exists('validate')):
+    
+        function validate(array $data, array $rules)
+        {
+            static $manager;
+            if(!$manager):
+                $manager = new Validation\Manager();
+
+                // let's add the rules that come with the framework
+                $manager->addRule('required', new Validation\Rule\RequiredRule());
+                $manager->addRule('email', new Validation\Rule\EmailRule());
+                $manager->addRule('min', new Validation\Rule\MinRule());
+            endif;
+            return $manager->validate($data, $rules);
+        }
+    endif;
 }
