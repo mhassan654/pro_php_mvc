@@ -5,6 +5,7 @@ namespace Framework\Database\QueryBuilder;
 
 
 use Framework\Database\Connection\Connection;
+use Framework\Database\Exception\QueryException;
 use PdoStatement;
 use Pdo;
 

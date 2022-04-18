@@ -4,6 +4,7 @@
 namespace Framework\Database\Connection;
 
 
+use Framework\Database\QueryBuilder\SqliteQueryBuilder;
 use http\Exception\InvalidArgumentException;
 use Pdo;
 

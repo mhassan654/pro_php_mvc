@@ -77,13 +77,13 @@ class Route
 
         preg_match_all("#{$pattern}#", $this->normalisePath($path),$matches);
 
-        $parametrValues=[];
+        $parameterValues=[];
         if(count($matches[1])>0){
 //            if the route matches the request path then
 //            we need to aassemble the parameters before
 //            we can return true for the match
             foreach ($matches[1] as $value){
-                $parametrValues[] = $value;
+                $parameterValues[] = $value;
             }
 
 //            make an empty array so  that we can still
@@ -100,7 +100,7 @@ class Route
 //            you'// usually want to use array_merge to combine arrays,
 //            but this is an interesting use for +=
             $parameterNames += $emptyVAlues;
-            $this->parameters = array_combine($parameterNames,$parametrValues);
+            $this->parameters = array_combine($parameterNames,$parameterValues);
             return true;
         }
         return false;

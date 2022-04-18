@@ -15,8 +15,10 @@ class Router
     protected string $path;
     protected  $handler;
     protected ?string $name = null;
+    protected array $parameters = [];
+    protected Route $current;
 
-    // public function __construct( string $method,string $path, $handler)
+    // public function __construct( string $method,string $path, callable $handler)
     // {
     //     $this->method = $method;
     //     $this->path = $path;
@@ -119,9 +121,9 @@ class Router
     private function paths(): array
     {
         $paths = [];
-        foreach ($this->routes as $route) {
-            $paths[] = $route->path();
-        }
+        // foreach ($this->routes as $route) {
+        //     $paths[] = $route->path();
+        // }
         return $paths;
     }
 

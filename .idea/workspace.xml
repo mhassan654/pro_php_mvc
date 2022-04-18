@@ -23,8 +23,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d9d36e8c-e9dd-4055-9d74-4f361d2fcc6e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/framework/Database/QueryBuilder/QueryBuilder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/framework/Database/Exception/ConnectionException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/framework/Database/Exception/QueryException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/framework/Database/QueryBuilder/MysqlQueryBuilder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/framework/Database/QueryBuilder/SqliteQueryBuilder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/includes/400.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/includes/500.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/home.basic.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Products/ShowProductController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Products/ShowProductsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Products/ShowProductsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/Database/Connection/Connection.php" beforeDir="false" afterPath="$PROJECT_DIR$/framework/Database/Connection/Connection.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/Database/Connection/MysqlConnection.php" beforeDir="false" afterPath="$PROJECT_DIR$/framework/Database/Connection/MysqlConnection.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/Database/Connection/SqliteConnection.php" beforeDir="false" afterPath="$PROJECT_DIR$/framework/Database/Connection/SqliteConnection.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/Database/Factory.php" beforeDir="false" afterPath="$PROJECT_DIR$/framework/Database/Factory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/Database/QueryBuilder/QueryBuilder.php" beforeDir="false" afterPath="$PROJECT_DIR$/framework/Database/QueryBuilder/QueryBuilder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/Routing/Route.php" beforeDir="false" afterPath="$PROJECT_DIR$/framework/Routing/Route.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/Routing/Router.php" beforeDir="false" afterPath="$PROJECT_DIR$/framework/Routing/Router.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/View/Manager.php" beforeDir="false" afterPath="$PROJECT_DIR$/framework/View/Manager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/404.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/404.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_files.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_files.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +131,7 @@
       <workItem from="1650180526723" duration="263000" />
       <workItem from="1650180854058" duration="4714000" />
       <workItem from="1650189292829" duration="4684000" />
-      <workItem from="1650219077536" duration="16573000" />
+      <workItem from="1650219077536" duration="21669000" />
     </task>
     <servers />
   </component>
@@ -133,6 +158,10 @@
       <screen x="0" y="0" width="1366" height="720" />
     </state>
     <state x="517" y="18" key="#CLI_Interpreters/0.0.1366.720@0.0.1366.720" timestamp="1650181570706" />
+    <state x="487" y="11" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1650305089281">
+      <screen x="0" y="0" width="1366" height="720" />
+    </state>
+    <state x="487" y="11" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.720@0.0.1366.720" timestamp="1650305089281" />
     <state x="780" y="42" key="#com.intellij.ide.util.MemberChooser" timestamp="1650179690110">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
@@ -153,14 +182,14 @@
       <screen x="0" y="0" width="1366" height="720" />
     </state>
     <state x="766" y="272" width="447" height="265" key="ComposerInitDialogKey/0.0.1366.720@0.0.1366.720" timestamp="1650140501933" />
-    <state x="772" y="83" key="NewPhpClassDialog" timestamp="1650274598488">
+    <state x="772" y="83" key="NewPhpClassDialog" timestamp="1650304970285">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
-    <state x="772" y="83" key="NewPhpClassDialog/0.0.1366.720@0.0.1366.720" timestamp="1650274598488" />
-    <state x="736" y="283" key="NewPhpFileDialog" timestamp="1650226411066">
+    <state x="772" y="83" key="NewPhpClassDialog/0.0.1366.720@0.0.1366.720" timestamp="1650304970285" />
+    <state x="736" y="283" key="NewPhpFileDialog" timestamp="1650294794198">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
-    <state x="736" y="283" key="NewPhpFileDialog/0.0.1366.720@0.0.1366.720" timestamp="1650226411066" />
+    <state x="736" y="283" key="NewPhpFileDialog/0.0.1366.720@0.0.1366.720" timestamp="1650294794198" />
     <state x="62" y="10" key="SettingsEditor" timestamp="1650188061715">
       <screen x="0" y="0" width="1366" height="720" />
     </state>

@@ -1,2 +1,2 @@
 
-<h1>No found</h1>
+<h1>404 No found</h1>

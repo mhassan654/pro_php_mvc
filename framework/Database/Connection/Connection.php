@@ -2,6 +2,7 @@
 
 
 namespace Framework\Database\Connection;
+use Framework\Database\QueryBuilder\QueryBuilder;
 use Pdo;
 
 

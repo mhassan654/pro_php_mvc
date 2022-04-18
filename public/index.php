@@ -16,4 +16,5 @@ $routes($router);
 try {
     print $router->dispatch();
 } catch (Throwable $e) {
+    print $e->getMessage();
 }

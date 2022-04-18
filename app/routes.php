@@ -8,13 +8,13 @@ use App\Http\Controllers\Products\ShowProductsController;
 use App\Http\Controllers\Users\ShowRegisterFormController;
 
 return function(Router $router){
-    // $router->add(
-    //     'GET','/',
-    //     fn()=>view('home',['number'=>42]),
-    // );
-      $router->add(
-        'GET','/',[HomeController::class,'handle'],
-    )->name('show-home');
+//    $router->add(
+//        'GET','/',
+//        fn()=>'hello saava',
+//    );
+       $router->add(
+         'GET','/',[HomeController::class,'handle'],
+     )->name('show-home');
 
     $router->add(
         'GET','/old-home',
@@ -57,7 +57,6 @@ return function(Router $router){
         // }
         [new ShowServiceController($router), 'handle'],
          )->name('show-service');
-    );
 
     $router->add(
         'GET','/products/{page?}',

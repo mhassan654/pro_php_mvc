@@ -11,7 +11,7 @@ class Factory
 {
     protected array $connectors;
 
-    public function addConnectors(string $alias, Closure $connector): static
+    public function addConnector(string $alias, Closure $connector): static
     {
 
         $this->connectors[$alias] = $connector;
