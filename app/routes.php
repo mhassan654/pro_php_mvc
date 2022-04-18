@@ -21,11 +21,11 @@ return function(Router $router){
         fn() => $router->redirect('/'),
     );
 
-    $router->add(
-        'GET', 'has-server-error',
-        // fn() => throw new Exception();
-        fn()=> throw new Exception()
-    );
+//    $router->add(
+//        'GET', 'has-server-error',
+//        // fn() => throw new Exception();
+//        fn()=> throw new Exception()
+//    );
 
     $router->add(
         'GET', '/has-validation-error',
