@@ -2,7 +2,14 @@
 <h1 class="text-xl font-semibold mb-4">Register</h1>
 <form method="post" action="{{$router->route('register-form')}}"
       class="flex flex-col w-fill space-y-4">
-
+@if(isset($_SESSION['errors']))
+<ol class="list-disc text-red-500">
+@foreach($_SESSION['errors'] as $field => $errors) @foreach($errors as
+$error)
+<li>{{ $error }}</li>
+@endforeach @endforeach
+</ol>
+@endif
     <label for="name" class="flex flex-col w-full">
         <span class="flex">Name:</span>
         <input

@@ -1,5 +1,6 @@
 <?php
 use Framework\View;
+use Framework\View\Manager;
 
 if(!function_exists('view'))
 {
@@ -37,20 +38,45 @@ if(!function_exists('view'))
         }
     endif;
 
+    // form field validation function
     if(!function_exists('validate')):
     
         function validate(array $data, array $rules)
         {
             static $manager;
             if(!$manager):
-                $manager = new Validation\Manager();
+                $manager = new Manager();
 
                 // let's add the rules that come with the framework
-                $manager->addRule('required', new Validation\Rule\RequiredRule());
-                $manager->addRule('email', new Validation\Rule\EmailRule());
-                $manager->addRule('min', new Validation\Rule\MinRule());
+                $manager->addRule('required', new \Framework\Validation\Rule\RequiredRule());
+                $manager->addRule('email', new \Framework\Validation\Rule\EmailRule());
+                $manager->addRule('min', new \Framework\Validation\Rule\MinRule());
             endif;
             return $manager->validate($data, $rules);
         }
     endif;
+
+    if(!function_exists('csrf')):
+        function csrf()
+        {
+            $_SESSION['token'] = bin2hex(random_bytes(32));
+            return $_SESSION['token'];
+        }
+    endif;
+
+    // form cross-site refrence token function
+    if(!function_exists('csrf')):
+        function csrf()
+        {
+            $_SESSION['token'] = bin2hex(random_bytes(32));
+            return $_SESSION['token'];
+        }
+    endif;
+    if (!function_exists('secure')) {
+        function secure()
+        {
+        if (!isset($_POST['csrf']) || !isset($_SESSION['token']) ||
+        !hash_equals($_SESSION['token'], $_POST['csrf'])) {
+            throw new Exception('CSRF token mismatch');
+        }
 }
