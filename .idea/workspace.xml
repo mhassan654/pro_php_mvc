@@ -23,7 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d9d36e8c-e9dd-4055-9d74-4f361d2fcc6e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/framework/Validation/Rule/MinRule.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/framework/Validation/Rule/RequiredRule.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +100,7 @@
       <workItem from="1650180526723" duration="263000" />
       <workItem from="1650180854058" duration="4714000" />
       <workItem from="1650189292829" duration="4684000" />
-      <workItem from="1650219077536" duration="10527000" />
+      <workItem from="1650219077536" duration="11330000" />
     </task>
     <servers />
   </component>
@@ -131,10 +131,10 @@
       <screen x="0" y="0" width="1366" height="720" />
     </state>
     <state x="780" y="42" key="#com.intellij.ide.util.MemberChooser/0.0.1366.720@0.0.1366.720" timestamp="1650179690110" />
-    <state x="710" y="150" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1650266393893">
+    <state x="710" y="150" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1650267356692">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
-    <state x="710" y="150" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1366.720@0.0.1366.720" timestamp="1650266393893" />
+    <state x="710" y="150" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1366.720@0.0.1366.720" timestamp="1650267356692" />
     <state x="582" y="96" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1650136751003">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
@@ -147,10 +147,10 @@
       <screen x="0" y="0" width="1366" height="720" />
     </state>
     <state x="766" y="272" width="447" height="265" key="ComposerInitDialogKey/0.0.1366.720@0.0.1366.720" timestamp="1650140501933" />
-    <state x="772" y="83" key="NewPhpClassDialog" timestamp="1650266394722">
+    <state x="772" y="83" key="NewPhpClassDialog" timestamp="1650267357776">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
-    <state x="772" y="83" key="NewPhpClassDialog/0.0.1366.720@0.0.1366.720" timestamp="1650266394722" />
+    <state x="772" y="83" key="NewPhpClassDialog/0.0.1366.720@0.0.1366.720" timestamp="1650267357776" />
     <state x="736" y="283" key="NewPhpFileDialog" timestamp="1650226411066">
       <screen x="0" y="0" width="1366" height="720" />
     </state>
