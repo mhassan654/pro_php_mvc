@@ -17,6 +17,8 @@ class RegisterUserController
 
     public function handle()
     {
+        secure();
+        
         $data = validate($_POST,[
             'name'=>['required'],
             'email'=>['required','email'],

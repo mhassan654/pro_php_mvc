@@ -2,6 +2,7 @@
 
 
 namespace Framework\Routing;
+
 use Exception;
 use Framework\Validation\ValidationException;
 use Whoops\Handler\PrettyPageHandler;
@@ -23,16 +24,14 @@ class Router
 
     // }
 
-    public function route(string $name, array $parameters=[]): string
+    public function route(string $name, array $parameters = []): string
     {
-        foreach($this->routes as $route)
-        {
-            if($route->name() === $name)
-            {
-                $finds =[];
-                $replaces=[];
+        foreach ($this->routes as $route) {
+            if ($route->name() === $name) {
+                $finds = [];
+                $replaces = [];
 
-                foreach($this->parameters as $key => $value){
+                foreach ($this->parameters as $key => $value) {
                     // one set for required parameters
                     array_push($finds, "{{$key}}");
                     array_push($replaces, $value);
@@ -46,19 +45,17 @@ class Router
                 $path = str_replace($finds, $replaces, $path);
 
                 //remove any optional parameters not provided
-                $path = preg_replace('#{[^}]+}#','',$path);
+                $path = preg_replace('#{[^}]+}#', '', $path);
 
                 // we should think about warnign if a requuried parameter is not 
                 // provided...
                 return $path;
             }
-
         }
         throw new Exception('no route with that name');
-
     }
 
-    
+
     public function add(string $method, string $path, $handler): Route
     {
         $route = $this->routes[] = new Route($method, $path, $handler);
@@ -76,25 +73,24 @@ class Router
         // the first that matches the requested method and path
         $matching = $this->matchAll($requestMethod, $requestPath);
 
-        if($matching){
+        if ($matching) {
             $this->current = $matching;
-            try{
+            try {
                 // this action could throw an exception
                 // so catch it and display the global error
                 //page that we wi;; define in the orutes file
                 return $matching->dispatch();
-            }catch(\Throwable $e)
-            {
-                if ($e instanceof ValidationException):
+            } catch (\Throwable $e) {
+                if ($e instanceof ValidationException) :
                     $_SESSION['errors'] = $e->getErrors();
-                return redirect($_SERVER['HTTP_REFERER']);
-                    endif;
+                    return redirect($_SERVER['HTTP_REFERER']);
+                endif;
 
-                if(isset($_ENV['APP_ENV']) && $_ENV['APP_ENV'] === 'dev'):
-                $whoops = new Run();
-                $whoops->pushHandler(new PrettyPageHandler());
-                $whoops->register();
-                throw $e;
+                if (isset($_ENV['APP_ENV']) && $_ENV['APP_ENV'] === 'dev') :
+                    $whoops = new Run();
+                    $whoops->pushHandler(new PrettyPageHandler());
+                    $whoops->register();
+                    throw $e;
                 endif;
 
                 return $this->dispatchError();
@@ -103,19 +99,17 @@ class Router
 
         // if the path is defined for a different method
         //we can throw a unique error page for it
-        if(in_array($requestPath, $paths)){
+        if (in_array($requestPath, $paths)) {
 
             return $this->dispatchNotAllowed();
         }
         return $this->dispatchNotFound();
-
     }
 
-     private function matchAll(string $method, string $path): ?Route
+    private function matchAll(string $method, string $path): ?Route
     {
-        foreach($this->routes as $route){
-            if($route->matches($method, $path))
-            {
+        foreach ($this->routes as $route) {
+            if ($route->matches($method, $path)) {
                 return $route;
             }
         }
@@ -125,13 +119,12 @@ class Router
     private function paths(): array
     {
         $paths = [];
-        foreach($this->routes as $route){
+        foreach ($this->routes as $route) {
             $paths[] = $route->path();
         }
         return $paths;
-
     }
-   
+
 
     public function errorHandler(int $code, callable $handler)
     {
@@ -140,25 +133,25 @@ class Router
 
     private function dispatchNotFound()
     {
-        $this->errorHandlers[404] ??= fn() =>"not found";
+        $this->errorHandlers[404] ??= fn () => "not found";
         return $this->errorHandlers[404]();
     }
 
     public function dispatchNotAllowed()
     {
-        $this->errorHandlers[400] ??= fn()=>"not allowed";
+        $this->errorHandlers[400] ??= fn () => "not allowed";
         return $this->errorHandlers[400]();
     }
 
     private function dispatchError()
     {
-        $this->errorHandlers[500] ??= fn()=>"server error";
+        $this->errorHandlers[500] ??= fn () => "server error";
         return $this->errorHandlers[500]();
     }
 
     public function redirect($path)
     {
-        header("Location: {$path}", $replace=true, $code=301);
+        header("Location: {$path}", $replace = true, $code = 301);
         exit;
     }
 
@@ -166,9 +159,4 @@ class Router
     {
         return $this->current;
     }
-
-
-    
-
-
 }

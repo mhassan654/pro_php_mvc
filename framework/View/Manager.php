@@ -28,21 +28,21 @@ class Manager
     public function validate(array $data, array $rules): array
     {
         $errors = [];
-        foreach($rules as $field => $rulesForField):
-            foreach($rulesForField as $rule):
+        foreach ($rules as $field => $rulesForField) :
+            foreach ($rulesForField as $rule) :
                 $name = $rule;
                 $params = [];
 
-                if(str_contains($rule, ':')):
+                if (str_contains($rule, ':')) :
                     [$name, $params] = explode(':', $rule);
                     $params = explode(',', $params);
                 endif;
 
                 $processor = $this->rules[$name];
 
-                if(!$processor->validate($data, $field, $params)): 
-                    if(!isset($errors[$field])):
-                        $errors[$field] =[];
+                if (!$processor->validate($data, $field, $params)) :
+                    if (!isset($errors[$field])) :
+                        $errors[$field] = [];
                     endif;
 
                     array_push($errors[$field], $processor->getMessage($data, $field, $params));
@@ -50,14 +50,13 @@ class Manager
             endforeach;
         endforeach;
 
-        if(count($errors)):
+        if (count($errors)) :
             $exception = new ValidationException();
             $exception->setErrors($errors);
             throw $exception;
         endif;
 
         return array_intersect_key($data, $rules);
-
     }
 
     public function addPath(string $path): static
@@ -76,14 +75,14 @@ class Manager
     public function render(string $template, array $data = []): string
     {
 
-        foreach ($this->engines as $extension => $engine):
-            foreach ($this->paths as $path):
+        foreach ($this->engines as $extension => $engine) :
+            foreach ($this->paths as $path) :
                 $file = "{$path}/{$template}.{$extension}";
 
-            if (is_file($file)):
-                return $engine->render($file,$data);
+                if (is_file($file)) :
+                    return $engine->render($file, $data);
                 endif;
-                endforeach;
+            endforeach;
         endforeach;
 
         throw new \Exception("Could not render '{$file}'");
@@ -91,18 +90,17 @@ class Manager
 
     public function resolve(string $template, array $data = []): View
     {
-        foreach ($this->engines as $extension => $engine):
-            foreach ($this->paths as $path):
+        foreach ($this->engines as $extension => $engine) :
+            foreach ($this->paths as $path) :
                 $file = "{$path}/{$template}.{$extension}";
 
-            if (is_file($file)):
-                return $engine->render($file,$data);
+                if (is_file($file)) :
+                    return $engine->render($file, $data);
                 endif;
-                endforeach;
+            endforeach;
         endforeach;
 
         throw new \Exception("Could not render '{$template}'");
-        
     }
 
     public function addMacro(string $name, Closure $closure): static
@@ -113,13 +111,11 @@ class Manager
 
     public function useMacro(string $name, ...$values)
     {
-        if(isset($this->macros[$name]))
-        {
+        if (isset($this->macros[$name])) {
             $bound = $this->macros[$name]->bindTo($this);
 
             return $bound(...$values);
         }
         throw new Exception("Macro isn't defined: '{$name}'");
     }
-
 }

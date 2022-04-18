@@ -72,11 +72,14 @@ if(!function_exists('view'))
             return $_SESSION['token'];
         }
     endif;
-    if (!function_exists('secure')) {
+
+    if (!function_exists('secure')):
         function secure()
         {
         if (!isset($_POST['csrf']) || !isset($_SESSION['token']) ||
-        !hash_equals($_SESSION['token'], $_POST['csrf'])) {
+        !hash_equals($_SESSION['token'], $_POST['csrf'])):
             throw new Exception('CSRF token mismatch');
+        endif;
         }
+    endif;
 }
