@@ -8,9 +8,7 @@ use Framework\View\Engine\Engine;
 
 class View
 {
-    public function __construct(
-        protected Engine $engine, 
-        public string $path, 
+    public function __construct(protected Engine $engine, public string $path,
         public array $data = [],
         ){
             

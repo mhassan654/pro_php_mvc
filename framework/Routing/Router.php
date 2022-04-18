@@ -58,7 +58,7 @@ class Router
     }
 
     
-    public function add(string $method, string $path, callable $handler): Route
+    public function add(string $method, string $path, $handler): Route
     {
         $route = $this->routes[] = new Route($method, $path, $handler);
         return $route;
