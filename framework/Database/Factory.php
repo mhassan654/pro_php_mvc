@@ -5,6 +5,7 @@ namespace Framework\Database;
 
 use Closure;
 use Framework\Database\Connection\Connection;
+use Framework\Database\Exception\ConnectionException;
 
 
 class Factory

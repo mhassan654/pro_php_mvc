@@ -17,9 +17,9 @@ class MysqlQueryBuilder extends QueryBuilder
     /**
      * @inheritDoc
      */
-//    public function connection(): MysqlConnection
-//    {
-//        // TODO: Implement connection() method.
-//        return new MysqlConnection($this);
-//    }
+   public function connection(): MysqlConnection
+   {
+       // TODO: Implement connection() method.
+       return new MysqlConnection($this);
+   }
 }

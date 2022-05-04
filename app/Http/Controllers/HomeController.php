@@ -20,7 +20,7 @@ class HomeController
             'type' => 'mysql',
             'host' => '127.0.0.1',
             'port' => '3306',
-            'database' => 'pro-php-mvc',
+            'database' => 'pro-php-mv',
             'username' => 'root',
             'password' => '',
         ]);

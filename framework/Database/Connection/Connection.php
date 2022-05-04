@@ -2,8 +2,9 @@
 
 
 namespace Framework\Database\Connection;
-use Framework\Database\QueryBuilder\QueryBuilder;
 use Pdo;
+use Framework\Database\Migration\Migration;
+use Framework\Database\QueryBuilder\QueryBuilder;
 
 
 abstract class Connection
@@ -17,5 +18,10 @@ abstract class Connection
      * Start a new query on this connection
      */
     abstract public function query(): QueryBuilder;
+
+    /**
+     * Start a new migration to add a table on this connection
+     */
+    abstract public function createTable(string $table): Migration;
 
 }
