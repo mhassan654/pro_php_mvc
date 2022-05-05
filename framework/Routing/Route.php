@@ -110,7 +110,11 @@ class Route
     {
         if (is_array($this->handler)) {
             [$class, $method] = $this->handler;
-            return (new $class)->{$method}();
+
+            if(is_string($class)):
+                return (new $class)->{$method}();
+            endif;
+            return $class->{$method}();
         }
         return call_user_func($this->handler);
     }

@@ -28,7 +28,7 @@ class MysqlConnection extends Connection
             throw new InvalidArgumentException('Connection incorrectly configured');
         endif;
 
-        $this->pdo = new Pdo("mysql:host={$host}:port={$port};dbname={$database}", $username,$password);
+        $this->pdo = new Pdo("mysql:host={$host};port={$port};dbname={$database}", $username,$password);
         
     }
 

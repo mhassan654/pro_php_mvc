@@ -4,9 +4,10 @@
 namespace Framework\Routing;
 
 use Exception;
-use Framework\Validation\ValidationException;
-use Whoops\Handler\PrettyPageHandler;
+use Throwable;
 use Whoops\Run;
+use Whoops\Handler\PrettyPageHandler;
+use Framework\Validation\ValidationException;
 
 class Router
 {
@@ -82,7 +83,7 @@ class Router
                 // so catch it and display the global error
                 //page that we wi;; define in the orutes file
                 return $matching->dispatch();
-            } catch (\Throwable $e) {
+            } catch (Throwable $e) {
                 if ($e instanceof ValidationException) :
                     $_SESSION['errors'] = $e->getErrors();
                     return redirect($_SERVER['HTTP_REFERER']);
