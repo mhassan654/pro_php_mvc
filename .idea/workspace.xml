@@ -23,17 +23,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d9d36e8c-e9dd-4055-9d74-4f361d2fcc6e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Console/Commands/NameCommand.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/framework/Database/Migration/BoolField.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/framework/Database/Migration/Field.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/framework/Database/Migration/IdField.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/framework/Database/Migration/Migration.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/framework/Database/Migration/MysqlMigration.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.example.txt" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/commands.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/commands.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/framework/Database/Connection/Connection.php" beforeDir="false" afterPath="$PROJECT_DIR$/framework/Database/Connection/Connection.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/Database/Connection/MysqlConnection.php" beforeDir="false" afterPath="$PROJECT_DIR$/framework/Database/Connection/MysqlConnection.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/framework/Database/QueryBuilder/MysqlQueryBuilder.php" beforeDir="false" afterPath="$PROJECT_DIR$/framework/Database/QueryBuilder/MysqlQueryBuilder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/Database/QueryBuilder/QueryBuilder.php" beforeDir="false" afterPath="$PROJECT_DIR$/framework/Database/QueryBuilder/QueryBuilder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +55,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration">
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PHPCodeSnifferProjectConfiguration">
+    <option name="selectedConfigurationId" value="DEFAULT_INTERPRETER" />
+  </component>
+  <component name="PhpServers">
+    <servers>
+      <server host="127.0.0.1" id="5e439adf-51ae-4f98-89b3-859580821baa" name="local" />
+    </servers>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/composer" />
       <path value="$PROJECT_DIR$/vendor/psr/log" />
@@ -83,25 +93,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="ASKED_MARK_IGNORED_FILES_AS_EXCLUDED" value="true" />
-    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
-    <property name="node.js.path.for.package.tslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="php.override.implement.member.chooser.php.doc" value="DEFAULT" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
+    "dart.analysis.tool.window.visible": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\pro_php_mvc\framework\Database\QueryBuilder" />
@@ -124,6 +127,10 @@
       <workItem from="1650189292829" duration="4684000" />
       <workItem from="1650219077536" duration="27843000" />
       <workItem from="1651691479484" duration="7000" />
+      <workItem from="1651776888707" duration="8458000" />
+      <workItem from="1651826430397" duration="250000" />
+      <workItem from="1651826888362" duration="136000" />
+      <workItem from="1651827096281" duration="1077000" />
     </task>
     <servers />
   </component>
@@ -140,55 +147,19 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="517" y="18" key="#CLI_Interpreters" timestamp="1650181570706">
-      <screen x="0" y="0" width="1366" height="720" />
-    </state>
-    <state x="517" y="18" key="#CLI_Interpreters/0.0.1366.720@0.0.1366.720" timestamp="1650181570706" />
-    <state x="487" y="11" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1650305089281">
-      <screen x="0" y="0" width="1366" height="720" />
-    </state>
-    <state x="487" y="11" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.720@0.0.1366.720" timestamp="1650305089281" />
-    <state x="780" y="42" key="#com.intellij.ide.util.MemberChooser" timestamp="1650311314797">
-      <screen x="0" y="0" width="1366" height="720" />
-    </state>
-    <state x="780" y="42" key="#com.intellij.ide.util.MemberChooser/0.0.1366.720@0.0.1366.720" timestamp="1650311314797" />
-    <state x="710" y="150" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1650267356692">
-      <screen x="0" y="0" width="1366" height="720" />
-    </state>
-    <state x="710" y="150" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1366.720@0.0.1366.720" timestamp="1650267356692" />
-    <state x="582" y="96" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1650136751003">
-      <screen x="0" y="0" width="1366" height="720" />
-    </state>
-    <state x="582" y="96" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1366.720@0.0.1366.720" timestamp="1650136751003" />
-    <state x="660" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1650195977036">
-      <screen x="0" y="0" width="1366" height="720" />
-    </state>
-    <state x="660" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.720@0.0.1366.720" timestamp="1650195977036" />
-    <state x="766" y="272" width="447" height="265" key="ComposerInitDialogKey" timestamp="1650140501933">
-      <screen x="0" y="0" width="1366" height="720" />
-    </state>
-    <state x="766" y="272" width="447" height="265" key="ComposerInitDialogKey/0.0.1366.720@0.0.1366.720" timestamp="1650140501933" />
-    <state x="772" y="83" key="NewPhpClassDialog" timestamp="1650309817821">
-      <screen x="0" y="0" width="1366" height="720" />
-    </state>
-    <state x="772" y="83" key="NewPhpClassDialog/0.0.1366.720@0.0.1366.720" timestamp="1650309817821" />
-    <state x="736" y="283" key="NewPhpFileDialog" timestamp="1650309488624">
-      <screen x="0" y="0" width="1366" height="720" />
-    </state>
-    <state x="736" y="283" key="NewPhpFileDialog/0.0.1366.720@0.0.1366.720" timestamp="1650309488624" />
-    <state x="62" y="10" key="SettingsEditor" timestamp="1650188061715">
-      <screen x="0" y="0" width="1366" height="720" />
-    </state>
-    <state x="62" y="10" key="SettingsEditor/0.0.1366.720@0.0.1366.720" timestamp="1650188061715" />
-    <state x="638" y="41" width="672" height="678" key="search.everywhere.popup" timestamp="1650179675789">
-      <screen x="0" y="0" width="1366" height="720" />
-    </state>
-    <state x="638" y="41" width="672" height="678" key="search.everywhere.popup/0.0.1366.720@0.0.1366.720" timestamp="1650179675789" />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/framework/Database/Factory.php</url>
+          <line>5</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

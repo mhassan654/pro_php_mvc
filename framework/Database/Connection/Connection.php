@@ -21,6 +21,8 @@ abstract class Connection
 
     /**
      * Start a new migration to add a table on this connection
+     * @param string $table
+     * @return Migration
      */
     abstract public function createTable(string $table): Migration;
 

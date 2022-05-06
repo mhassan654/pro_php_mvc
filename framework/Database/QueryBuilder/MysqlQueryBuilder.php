@@ -3,6 +3,8 @@
 
 namespace Framework\Database\QueryBuilder;
 
+
+use Framework\Database\Connection\Connection;
 use Framework\Database\Connection\MysqlConnection;
 
 class MysqlQueryBuilder extends QueryBuilder
@@ -17,9 +19,15 @@ class MysqlQueryBuilder extends QueryBuilder
     /**
      * @inheritDoc
      */
-   public function connection(): MysqlConnection
-   {
-       // TODO: Implement connection() method.
-       return new MysqlConnection($this);
-   }
+    public function connection(): MysqlConnection
+    {
+        // TODO: Implement connection() method.
+        $config =[
+            'host'=>'127.0.0.1',
+            'port'=>'3306',
+            'database'=>'promvc',
+            'password'=>'',
+            'username'=>'root'];
+        return new MysqlConnection($config);
+    }
 }

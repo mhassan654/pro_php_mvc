@@ -20,16 +20,13 @@ class HomeController
             'type' => 'mysql',
             'host' => '127.0.0.1',
             'port' => '3306',
-            'database' => 'pro-php-mv',
+            'database' => 'promvc',
             'username' => 'root',
             'password' => '',
         ]);
 
-        $product = $connection
-            ->query()
-            ->select()
-            ->from('products')
-            ->first();
-        return view('home', ['number' => 42,'featured' => $product]);
+        $product = $connection->query()->select()->from('products')->first();
+        var_dump($product);
+//        return view('home', ['number' => 42,'featured' => '']);
     }
 }

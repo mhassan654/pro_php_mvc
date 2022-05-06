@@ -21,7 +21,7 @@ abstract class QueryBuilder
     /**
      * Get the underlying Connection instance for this query
      */
-    abstract public function connection(): Connection;
+//    abstract public function connection(): Connection;
 
     /**
      * Fetch all rows matching the current query
@@ -40,7 +40,7 @@ abstract class QueryBuilder
     public function prepare(): PdoStatement
     {
         $query = '';
-        if ($this->type === 'select') :
+        if ($this->type === 'SELECT') :
             $query = $this->compileSelect($query);
             $query = $this->compileLimit($query);
         endif;
@@ -54,15 +54,19 @@ abstract class QueryBuilder
 
     /**
      * Add select clause to the query
+     * @param string $query
+     * @return string
      */
     protected function compileSelect(string $query): string
     {
-        $query .= "SELECT {$this->columns} FROM {$this->table}";
+        $query .= "SELECT {$this->column} FROM {$this->table}";
         return $query;
     }
 
     /**
      * Add limit and offset clauses to the query
+     * @param string $query
+     * @return string
      */
     protected function compileLimit(string $query): string
     {
@@ -90,6 +94,9 @@ abstract class QueryBuilder
     /**
      * Limit a set of query results so that it's possible
      * to fetch a single or limited batch of rows
+     * @param int $limit
+     * @param int $offset
+     * @return QueryBuilder
      */
     public function take(int $limit, int $offset = 0): static
     {
@@ -97,22 +104,28 @@ abstract class QueryBuilder
         $this->offset = $offset;
         return $this;
     }
+
     /**
      * Indicate which table the query is targeting
+     * @param string $table
+     * @return QueryBuilder
      */
     public function from(string $table): static
     {
         $this->table = $table;
         return $this;
     }
+
     /**
      * Indicate the query type is a "select" and remember
      * which fields should be returned by the query
+     * @param string $column
+     * @return QueryBuilder
      */
-    public function select(string $columns = '*'): static
+    public function select(string $column = '*'): static
     {
-        $this->type = 'select';
-        $this->columns = $columns;
+        $this->type = 'SELECT';
+        $this->column = $column;
         return $this;
     }
 }
