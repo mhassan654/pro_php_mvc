@@ -10,9 +10,9 @@
 </head>
 <body>
 <div class="container mx-auto font-sans">
-    <h1 class="text-xl font-semibold">Welcome to Whoosh!</h1>
+    <h1 class="text-xl font-semibold">Welcome to Home!</h1>
     <p>Here, you can buy {number} rockets.</p>
-    {product}
+    <p> {featured}</p>
 </div>
 </body>
 </html>

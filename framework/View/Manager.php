@@ -89,6 +89,9 @@ class Manager
         throw new \Exception("Could not resolve '{$file}'");
     }
 
+    /**
+     * @throws Exception
+     */
     public function resolve(string $template, array $data = []): View
     {
         foreach ($this->engines as $extension => $engine) :
@@ -113,6 +116,9 @@ class Manager
         return $this;
     }
 
+    /**
+     * @throws Exception
+     */
     public function useMacro(string $name, ...$values)
     {
         if (isset($this->macros[$name])) {

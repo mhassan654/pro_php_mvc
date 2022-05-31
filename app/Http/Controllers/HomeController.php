@@ -25,8 +25,13 @@ class HomeController
             'password' => '',
         ]);
 
-        $product = $connection->query()->select()->from('products')->first();
-        var_dump($product);
-//        return view('home', ['number' => 42,'featured' => '']);
+        $product = $connection
+            ->query()
+            ->select()
+            ->from('products')
+            ->first();
+        $products = json_encode($product);
+//        print_r($product);
+        return view('home', ['number' => 42,'featured' => $products]);
     }
 }

@@ -13,7 +13,7 @@ abstract class QueryBuilder
 {
 
     protected string $type;
-    protected string $column;
+    protected string $columns;
     protected string $table;
     protected int $limit;
     protected int $offset;
@@ -59,7 +59,7 @@ abstract class QueryBuilder
      */
     protected function compileSelect(string $query): string
     {
-        $query .= "SELECT {$this->column} FROM {$this->table}";
+        $query .= " SELECT {$this->columns} FROM {$this->table}";
         return $query;
     }
 
@@ -71,11 +71,11 @@ abstract class QueryBuilder
     protected function compileLimit(string $query): string
     {
         if ($this->limit) :
-            $query .= "LIMIT {$this->limit}";
+            $query .= " LIMIT {$this->limit}";
         endif;
 
         if ($this->offset) :
-            $query .= "OFFSET {$this->offset}";
+            $query .= " OFFSET {$this->offset}";
         endif;
 
         return $query;
@@ -119,13 +119,13 @@ abstract class QueryBuilder
     /**
      * Indicate the query type is a "select" and remember
      * which fields should be returned by the query
-     * @param string $column
+     * @par
      * @return QueryBuilder
      */
-    public function select(string $column = '*'): static
+    public function select(string $columns = '*'): static
     {
         $this->type = 'SELECT';
-        $this->column = $column;
+        $this->columns = $columns;
         return $this;
     }
 }

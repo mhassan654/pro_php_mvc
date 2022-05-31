@@ -21,13 +21,14 @@ abstract class Migration
 
     public function dateTime(string $name): DateTimeField
     {
-        $fields = $this->fields[] = new DateTimeField($name);
-        return $fields;
+        $field = $this->fields[] = new DateTimeField($name);
+        return $field;
     }
 
     public function float(string $name): FloatField
     {
         $field = $this->fields[] = new FloatField($name);
+        return $field;
     }
 
     public function id(string $name): IdField
