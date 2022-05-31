@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '4ec7cd136492eacb4a681f8f41ae74627626cac2',
+        'reference' => 'ec84efedd4adf476a98ecfbc09d79df6289e3772',
         'name' => 'saavatech/pro_php_mvc',
         'dev' => true,
     ),
@@ -67,7 +67,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '4ec7cd136492eacb4a681f8f41ae74627626cac2',
+            'reference' => 'ec84efedd4adf476a98ecfbc09d79df6289e3772',
             'dev_requirement' => false,
         ),
         'symfony/console' => array(

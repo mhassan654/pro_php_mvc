@@ -65,6 +65,9 @@ class Router
         return $route;
     }
 
+    /**
+     * @throws Throwable
+     */
     public function dispatch()
     {
         $paths = $this->paths();
