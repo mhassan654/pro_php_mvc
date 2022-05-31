@@ -4,9 +4,10 @@
 namespace Framework\Routing;
 
 use Exception;
-use Framework\Validation\ValidationException;
-use Whoops\Handler\PrettyPageHandler;
+use Throwable;
 use Whoops\Run;
+use Whoops\Handler\PrettyPageHandler;
+use Framework\Validation\ValidationException;
 
 class Router
 {
@@ -15,8 +16,10 @@ class Router
     protected string $path;
     protected  $handler;
     protected ?string $name = null;
+    protected array $parameters = [];
+    protected Route $current;
 
-    // public function __construct( string $method,string $path, $handler)
+    // public function __construct( string $method,string $path, callable $handler)
     // {
     //     $this->method = $method;
     //     $this->path = $path;
@@ -62,6 +65,9 @@ class Router
         return $route;
     }
 
+    /**
+     * @throws Throwable
+     */
     public function dispatch()
     {
         $paths = $this->paths();
@@ -80,7 +86,7 @@ class Router
                 // so catch it and display the global error
                 //page that we wi;; define in the orutes file
                 return $matching->dispatch();
-            } catch (\Throwable $e) {
+            } catch (Throwable $e) {
                 if ($e instanceof ValidationException) :
                     $_SESSION['errors'] = $e->getErrors();
                     return redirect($_SERVER['HTTP_REFERER']);
@@ -119,9 +125,9 @@ class Router
     private function paths(): array
     {
         $paths = [];
-        foreach ($this->routes as $route) {
-            $paths[] = $route->path();
-        }
+        // foreach ($this->routes as $route) {
+        //     $paths[] = $route->path();
+        // }
         return $paths;
     }
 

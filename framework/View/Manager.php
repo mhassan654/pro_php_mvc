@@ -61,7 +61,7 @@ class Manager
 
     public function addPath(string $path): static
     {
-        $this->paths[] = $path;
+        array_push($this->paths, $path);
         return $this;
     }
 
@@ -72,7 +72,7 @@ class Manager
         return $this;
     }
 
-    public function render(string $template, array $data = []): string
+    public function render(string $template, array $data = []): View
     {
 
         foreach ($this->engines as $extension => $engine) :
@@ -80,27 +80,34 @@ class Manager
                 $file = "{$path}/{$template}.{$extension}";
 
                 if (is_file($file)) :
-                    return $engine->render($file, $data);
+                    // return $engine->render($file, $data);
+                    return new View($engine, realpath($file), $data);
                 endif;
             endforeach;
         endforeach;
 
-        throw new \Exception("Could not render '{$file}'");
+        throw new \Exception("Could not resolve '{$file}'");
     }
 
+    /**
+     * @throws Exception
+     */
     public function resolve(string $template, array $data = []): View
     {
         foreach ($this->engines as $extension => $engine) :
             foreach ($this->paths as $path) :
                 $file = "{$path}/{$template}.{$extension}";
 
-                if (is_file($file)) :
-                    return $engine->render($file, $data);
-                endif;
+                // if (is_file($file)) :
+                //     return $engine->render($file, $data);
+                // endif;
+                if (is_file($file)) {
+                    return new View($engine, realpath($file), $data);
+                }
             endforeach;
         endforeach;
 
-        throw new \Exception("Could not render '{$template}'");
+        throw new \Exception("Could not resolve '{$template}'");
     }
 
     public function addMacro(string $name, Closure $closure): static
@@ -109,6 +116,9 @@ class Manager
         return $this;
     }
 
+    /**
+     * @throws Exception
+     */
     public function useMacro(string $name, ...$values)
     {
         if (isset($this->macros[$name])) {

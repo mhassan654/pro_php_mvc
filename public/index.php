@@ -13,7 +13,8 @@ $router = new Framework\Routing\Router();
 $routes = require_once __DIR__ . '/../app/routes.php';
 $routes($router);
 
-try {
+//try {
     print $router->dispatch();
-} catch (Throwable $e) {
-}
+//} catch (Throwable $e) {
+//    print $e->getMessage();
+//}
