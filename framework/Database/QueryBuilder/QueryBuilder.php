@@ -34,6 +34,15 @@ abstract class QueryBuilder
         return $statement->fetchAll(Pdo::FETCH_ASSOC);
     }
 
+    public function insert(array $columns, array $values): int
+    {
+        $this->type = 'insert';
+        $this->columns = $columns;
+        $this->values = $values;
+        $statement = $this->prepare();
+        return $statement->execute($values);
+    }
+
     /**
      * Prepare a query against a particular connection
      */
@@ -45,9 +54,15 @@ abstract class QueryBuilder
             $query = $this->compileLimit($query);
         endif;
 
+        if ($this->type === 'insert') {
+            $query = $this->compileInsert($query);
+        }
+
         if (empty($query)) :
             throw new QueryException('Unrecognised query type');
         endif;
+
+
 
         return $this->connection()->pdo()->prepare($query);
     }
@@ -127,5 +142,15 @@ abstract class QueryBuilder
         $this->type = 'SELECT';
         $this->columns = $columns;
         return $this;
+    }
+
+    private function compileInsert(string $query): string
+    {
+        $joinedColumns = join(',', $this->columns);
+        $joinedPlaceholders = join(', ', array_map(fn($column) => ":{$column}",
+            (array)$this->columns));
+        $query .= " INSERT INTO {$this->table} ({$joinedColumns}) VALUES
+                ({$joinedPlaceholders})";
+        return $query;
     }
 }

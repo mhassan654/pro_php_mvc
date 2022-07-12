@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Framework\Database\Factory;
 use Framework\Database\Connection\MysqlConnection;
+use Framework\Database\Connection\SqliteConnection;
 
 
 class HomeController
@@ -16,14 +17,12 @@ class HomeController
         $factory->addConnector('mysql', function ($config) {
             return new MysqlConnection($config);
         });
-        $connection = $factory->connect([
-            'type' => 'mysql',
-            'host' => '127.0.0.1',
-            'port' => '3306',
-            'database' => 'promvc',
-            'username' => 'root',
-            'password' => '',
-        ]);
+        $factory->addConnector('sqlite', function ($config) {
+            return new SqliteConnection($config);
+        });
+
+        $config = require __DIR__ .'/../../../config/database.php';
+        $connection  =$factory->connect($config[$config['default']]);
 
         $product = $connection
             ->query()
