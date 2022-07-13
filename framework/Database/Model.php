@@ -11,6 +11,7 @@ abstract class Model
 {
     protected Connection $connection;
     protected string $table;
+    protected array $attributes;
 
     public function setConnection(Connection $connection)
     {
@@ -52,6 +53,27 @@ abstract class Model
         }
 
         return $this->table;
+    }
+
+    public static function with(array $attributes = []): static
+    {
+        $model = new static();
+        $model->attributes = $attributes;
+        return $model;
+    }
+
+    public function all(): array
+    {
+        if (!isset($this->type)){
+            $this->select();
+        }
+    }
+
+    public function first(): array
+    {
+        if (!isset($this->type)){
+            $this->select();
+        }
     }
 
 }
