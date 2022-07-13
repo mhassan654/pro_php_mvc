@@ -15,6 +15,9 @@ class RegisterUserController
         $this->router = $router;
     }
 
+    /**
+     * @throws \Exception
+     */
     public function handle()
     {
         secure();
@@ -26,7 +29,7 @@ class RegisterUserController
         ]);
 
         // use $data to create a db record
-        $_SESSION['registerd'] = true;
+        $_SESSION['registered'] = true;
         return redirect($this->router->route('home-page'));
     }
 

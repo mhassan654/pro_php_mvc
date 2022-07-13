@@ -1,10 +1,8 @@
 <?php
 
-
 namespace Framework\View\Engine;
 
 use Framework\View\Manager;
-
 
 trait HasManager
 {
@@ -14,5 +12,4 @@ trait HasManager
         $this->manager = $manager;
         return $this;
     }
-
 }

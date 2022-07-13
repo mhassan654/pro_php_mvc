@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Framework\Routing;
-
 
 class Route
 {
@@ -18,7 +16,7 @@ class Route
         $this->handler = $handler;
     }
 
-    public function parameters():array
+    public function parameters(): array
     {
         return $this->parameters;
     }
@@ -38,7 +36,7 @@ class Route
 //        trying to match with a regular expresssion
         if (
             $this->method === $method && $this->path === $path
-        ){
+        ) {
             return true;
         }
         $parameterNames =[];
@@ -57,12 +55,12 @@ class Route
 
         $pattern = preg_replace_callback(
             '#{([^}]+)}/#',
-            function (array $found) use (&$parameterNames){
+            function (array $found) use (&$parameterNames) {
                 $parameterNames[] = rtrim($found[1], '?');
 
 //                if it's an optional parameter, we make the
 //                following slash optional as well'
-                if (str_ends_with($found[1],'?')):
+                if (str_ends_with($found[1], '?')):
                     return '([^/]*)(?:/?)';
                 endif;
                 return '([^/]+)/';
@@ -70,19 +68,18 @@ class Route
             $pattern,
         );
 
-        if(!str_contains($pattern, '+') && !str_contains($pattern, '*'))
-        {
+        if (!str_contains($pattern, '+') && !str_contains($pattern, '*')) {
             return false;
         }
 
-        preg_match_all("#{$pattern}#", $this->normalisePath($path),$matches);
+        preg_match_all("#{$pattern}#", $this->normalisePath($path), $matches);
 
         $parameterValues=[];
-        if(count($matches[1])>0){
+        if (count($matches[1])>0) {
 //            if the route matches the request path then
 //            we need to aassemble the parameters before
 //            we can return true for the match
-            foreach ($matches[1] as $value){
+            foreach ($matches[1] as $value) {
                 $parameterValues[] = $value;
             }
 
@@ -90,7 +87,9 @@ class Route
 //            call array_combine with optional parameters
 //            which may not have been provided
             $emptyVAlues = array_fill(
-                0, count($parameterNames),null
+                0,
+                count($parameterNames),
+                null
             );
 
             //+= syntax for arrays means: take valuse fromt he right-hand
@@ -100,19 +99,19 @@ class Route
 //            you'// usually want to use array_merge to combine arrays,
 //            but this is an interesting use for +=
             $parameterNames += $emptyVAlues;
-            $this->parameters = array_combine($parameterNames,$parameterValues);
+            $this->parameters = array_combine($parameterNames, $parameterValues);
             return true;
         }
         return false;
-}
+    }
 
     public function dispatch()
     {
         if (is_array($this->handler)) {
             [$class, $method] = $this->handler;
 
-            if(is_string($class)):
-                return (new $class)->{$method}();
+            if (is_string($class)):
+                return (new $class())->{$method}();
             endif;
             return $class->{$method}();
         }
@@ -121,22 +120,21 @@ class Route
 
     private function normalisePath(string $path): string
     {
-        $path = trim($path,'/');
+        $path = trim($path, '/');
         $path = "/{$path}/";
-        
+
         // remove multiple '/' in a row
-        $path = preg_replace('/[\/]{2,}/','/',$path);
+        $path = preg_replace('/[\/]{2,}/', '/', $path);
         return $path;
     }
 
     public function name(string $name = null): mixed
     {
-        if($name){
+        if ($name) {
             $this->name = $name;
             return $this;
         }
 
         return $this->name;
     }
-
 }

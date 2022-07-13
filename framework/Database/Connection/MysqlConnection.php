@@ -23,7 +23,6 @@ class MysqlConnection extends Connection
 
     public function __construct(array $config)
     {
-
         [
             'host' => $host,
             'port' => $port,
@@ -35,9 +34,8 @@ class MysqlConnection extends Connection
         if (empty($host) || empty($database) || empty($username)) :
             throw new InvalidArgumentException('Connection Incorrectly configured');
         endif;
-        
+
         $this->pdo = new Pdo("mysql:host={$host};port={$port};dbname={$database}", $username, $password);
-    
     }
 
     /**0700447559
@@ -115,7 +113,7 @@ class MysqlConnection extends Connection
 
             if ($field->default === 'CURRENT_TIMESTAMP') {
                 $template .= " DEFAULT CURRENT_TIMESTAMP";
-            } else if ($field->default !== null) {
+            } elseif ($field->default !== null) {
                 $template .= "DEFAULT '{$field->default}'";
             }
 
@@ -169,17 +167,15 @@ class MysqlConnection extends Connection
     public function getTables(): array
     {
         return [];
-            
     }
 
     public function hasTable($name): bool
     {
-        return true;            
+        return true;
     }
 
     public function dropTables(): int
     {
         return 1;
-            
     }
 }

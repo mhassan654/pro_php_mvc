@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Framework\Database\Connection;
-
 
 use Framework\Database\QueryBuilder\SqliteQueryBuilder;
 use http\Exception\InvalidArgumentException;
@@ -17,8 +15,8 @@ class SqliteConnection extends Connection
         ['path' => $path] = $config;
         if (empty($path)):
             throw new InvalidArgumentException('Connection incorrectly configured');
-            endif;
-            $this->pdo = new Pdo('sqlite:{$path}');
+        endif;
+        $this->pdo = new Pdo('sqlite:{$path}');
     }
 
     /**

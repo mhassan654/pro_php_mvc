@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Framework\Database\QueryBuilder;
 
 use Framework\Database\Connection\SqliteConnection;

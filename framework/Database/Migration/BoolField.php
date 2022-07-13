@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Framework\Database\Migration;
-
 
 class BoolField extends Field
 {
@@ -13,5 +11,4 @@ class BoolField extends Field
         $this->default = $value;
         return $this;
     }
-
 }

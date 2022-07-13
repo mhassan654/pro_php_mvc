@@ -1,10 +1,8 @@
 <?php
 
-
 namespace Framework\View\Engine;
 
 use Framework\View\View;
-
 
 class BasicEngine implements Engine
 {
@@ -17,7 +15,7 @@ class BasicEngine implements Engine
 
         $contents = file_get_contents($view->path);
         // foreach($data as $key => $value):
-            foreach($view->data as $key => $value):
+        foreach ($view->data as $key => $value):
             $contents = str_replace('{'.$key.'}', $value, $contents);
         endforeach;
         return $contents;

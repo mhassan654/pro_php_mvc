@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Framework\View;
 
 use Closure;
@@ -9,6 +8,7 @@ use Framework\View\View;
 use Framework\View\Engine\Engine;
 use Framework\Validation\Rule\Rule;
 use Framework\Validation\ValidationException;
+
 // use Dotenv\Exception\ValidationException;
 
 
@@ -31,29 +31,29 @@ class Manager
         foreach ($rules as $field => $rulesForField) :
             foreach ($rulesForField as $rule) :
                 $name = $rule;
-                $params = [];
+        $params = [];
 
-                if (str_contains($rule, ':')) :
+        if (str_contains($rule, ':')) :
                     [$name, $params] = explode(':', $rule);
-                    $params = explode(',', $params);
-                endif;
+        $params = explode(',', $params);
+        endif;
 
-                $processor = $this->rules[$name];
+        $processor = $this->rules[$name];
 
-                if (!$processor->validate($data, $field, $params)) :
+        if (!$processor->validate($data, $field, $params)) :
                     if (!isset($errors[$field])) :
                         $errors[$field] = [];
-                    endif;
+        endif;
 
-                    array_push($errors[$field], $processor->getMessage($data, $field, $params));
-                endif;
-            endforeach;
+        array_push($errors[$field], $processor->getMessage($data, $field, $params));
+        endif;
+        endforeach;
         endforeach;
 
         if (count($errors)) :
             $exception = new ValidationException();
-            $exception->setErrors($errors);
-            throw $exception;
+        $exception->setErrors($errors);
+        throw $exception;
         endif;
 
         return array_intersect_key($data, $rules);
@@ -74,16 +74,15 @@ class Manager
 
     public function render(string $template, array $data = []): View
     {
-
         foreach ($this->engines as $extension => $engine) :
             foreach ($this->paths as $path) :
                 $file = "{$path}/{$template}.{$extension}";
 
-                if (is_file($file)) :
+        if (is_file($file)) :
                     // return $engine->render($file, $data);
                     return new View($engine, realpath($file), $data);
-                endif;
-            endforeach;
+        endif;
+        endforeach;
         endforeach;
 
         throw new \Exception("Could not resolve '{$file}'");
@@ -98,13 +97,13 @@ class Manager
             foreach ($this->paths as $path) :
                 $file = "{$path}/{$template}.{$extension}";
 
-                // if (is_file($file)) :
-                //     return $engine->render($file, $data);
-                // endif;
-                if (is_file($file)) {
-                    return new View($engine, realpath($file), $data);
-                }
-            endforeach;
+        // if (is_file($file)) :
+        //     return $engine->render($file, $data);
+        // endif;
+        if (is_file($file)) {
+            return new View($engine, realpath($file), $data);
+        }
+        endforeach;
         endforeach;
 
         throw new \Exception("Could not resolve '{$template}'");

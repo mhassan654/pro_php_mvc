@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Framework\Database\Migration;
-
 
 use Framework\Database\Migration\BoolField;
 use Framework\Database\Migration\FloatField;
@@ -57,5 +55,4 @@ abstract class Migration
 
     abstract public function connection(): Connection;
     abstract public function execute(): void;
-
 }

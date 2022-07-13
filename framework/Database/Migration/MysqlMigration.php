@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Framework\Database\Migration;
-
 
 use Framework\Database\Migration\Field;
 use Framework\Database\Migration\Migration;
@@ -27,7 +25,7 @@ class MysqlMigration extends Migration
 
     public function dropColumn(string $name): static
     {
-        $this->dropa[] = $name;
+        $this->drops[] = $name;
         return $this;
     }
 
@@ -52,7 +50,7 @@ class MysqlMigration extends Migration
         if ($this->alter === 'alter') {
             $fields = join(PHP_EOL, array_map(fn ($field) => "{$field};", $fields));
 
-            $drops = join(PHP_EOL, array_map(fn($drop)=>"DROP COLUMN `{$drop}`;",$this->drops));
+            $drops = join(PHP_EOL, array_map(fn ($drop) =>"DROP COLUMN `{$drop}`;", $this->drops));
 
             $query = "ALTER TABLE `{$this->table}` {$fields} {$drops}";
         }
@@ -66,91 +64,91 @@ class MysqlMigration extends Migration
         if ($field instanceof BoolField) :
             $template = "`{$field->name}` tinyint(4)";
 
-            if ($field->nullable) :
+        if ($field->nullable) :
                 $template .= "DEFAULT NULL";
-            endif;
+        endif;
 
-            if ($field->default !== null) :
+        if ($field->default !== null) :
                 $default = (int) $field->default;
-                $template .= "DEFAULT {$default}";
-            endif;
+        $template .= "DEFAULT {$default}";
+        endif;
 
-            return $template;
+        return $template;
 
         endif;
 
         if ($field instanceof DateTimeField) :
             $template = "`{$field->name}` datetime";
 
-            if ($field->nullable) :
+        if ($field->nullable) :
                 $template .= "DEFAULT NULL";
-            endif;
-            // endif;
+        endif;
+        // endif;
 
-            if ($field->default === 'CURRENT_TIMESTAMP') :
+        if ($field->default === 'CURRENT_TIMESTAMP') :
                 $template .= " DEFAULT CURRENT_TIMESTAMP";
 
-            endif;
+        endif;
 
-            if ($field->default !== null) :
+        if ($field->default !== null) :
                 $template .= " DEFAULT '{$field->default}'";
 
-            endif;
-            return $template;
+        endif;
+        return $template;
         endif;
 
         if ($field instanceof FloatField) :
             $template = "`{$field->name}` float";
-            // }
+        // }
 
-            if ($field->nullable) :
+        if ($field->nullable) :
                 $template .= " DEFAULT NULL";
 
-                // }
+        // }
 
-                if ($field->default !== null) :
+        if ($field->default !== null) :
                     $template .= " DEFAULT '{$field->default}'";
 
-                endif;
-                return $template;
+        endif;
+        return $template;
 
-            endif;
+        endif;
 
-            if ($field instanceof IdField) :
+        if ($field instanceof IdField) :
                 return "`{$field->name}` int(11) unsigned NOT NULL AUTO_INCREMENT";
 
-            endif;
+        endif;
 
-            if ($field instanceof IntField) :
+        if ($field instanceof IntField) :
                 $template = "`{$field->name}` int(11)";
 
-                if ($field->nullable) :
+        if ($field->nullable) :
                     $template .= " DEFAULT NULL";
-                endif;
+        endif;
 
-                if ($field->default !== null) :
+        if ($field->default !== null) :
                     $template .= " DEFAULT '{$field->default}'";
-                endif;
+        endif;
 
-                return $template;
-            endif;
-            // }
-            if ($field instanceof StringField) :
+        return $template;
+        endif;
+        // }
+        if ($field instanceof StringField) :
                 $template = "`{$field->name}` varchar(255)";
 
-                if ($field->nullable) :
+        if ($field->nullable) :
                     $template .= " DEFAULT NULL";
-                endif;
+        endif;
 
-                if ($field->default !== null) :
+        if ($field->default !== null) :
                     $template .= " DEFAULT '{$field->default}'";
-                endif;
-                return $template;
-            endif;
+        endif;
+        return $template;
+        endif;
 
-            if ($field instanceof TextField) :
+        if ($field instanceof TextField) :
                 return "`{$field->name}` text";
-            endif;
+        endif;
         // throw new MigrationException("Unrecognised field type for {$field->name}");
         endif;
         // endif;
@@ -168,5 +166,6 @@ class MysqlMigration extends Migration
     public function connection(): Connection
     {
         // TODO: Implement connection() method.
+//        return '';
     }
 }

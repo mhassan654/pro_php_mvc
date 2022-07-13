@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Framework\Database\QueryBuilder;
-
 
 use Framework\Database\Connection\Connection;
 use Framework\Database\Exception\QueryException;
@@ -11,7 +9,6 @@ use Pdo;
 
 abstract class QueryBuilder
 {
-
     protected string $type;
     protected string $columns;
     protected string $table;
@@ -51,7 +48,7 @@ abstract class QueryBuilder
         $query = '';
         if ($this->type === 'SELECT') :
             $query = $this->compileSelect($query);
-            $query = $this->compileLimit($query);
+        $query = $this->compileLimit($query);
         endif;
 
         if ($this->type === 'insert') {
@@ -147,8 +144,10 @@ abstract class QueryBuilder
     private function compileInsert(string $query): string
     {
         $joinedColumns = join(',', $this->columns);
-        $joinedPlaceholders = join(', ', array_map(fn($column) => ":{$column}",
-            (array)$this->columns));
+        $joinedPlaceholders = join(', ', array_map(
+            fn ($column) => ":{$column}",
+            (array)$this->columns
+        ));
         $query .= " INSERT INTO {$this->table} ({$joinedColumns}) VALUES
                 ({$joinedPlaceholders})";
         return $query;

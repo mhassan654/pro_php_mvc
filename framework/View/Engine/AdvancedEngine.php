@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Framework\View\Engine;
-
 
 use Framework\View\Manager;
 use Framework\View\View;
@@ -22,7 +20,7 @@ class AdvancedEngine implements Engine
         if (!file_exists($hash) || filemtime($view->path) >
             filemtime($hash)):
             $content = $this->compile(file_get_contents($view->path));
-            file_put_contents($cached,$content);
+        file_put_contents($cached, $content);
         endif;
 
         extract($view->data);
@@ -32,14 +30,14 @@ class AdvancedEngine implements Engine
         $contents = ob_get_contents();
         ob_end_clean();
 
-        if($layout = $this->layouts[$cached] ?? null):
+        if ($layout = $this->layouts[$cached] ?? null):
             $contentsWithLayout = view($layout, array_merge(
                 $view->data,
                 ['contents' => $contents],
             ));
         return $contentsWithLayout;
-            endif;
-            return $contents;
+        endif;
+        return $contents;
     }
 
     // public function setManager(Manager $manager): static
@@ -51,39 +49,51 @@ class AdvancedEngine implements Engine
     protected function compile(string $template): string
     {
         // replace `@extends` with `$this->extends`
-        $template = preg_replace_callback('#@extends\(([^)]+)\)#',
-        function($matches){
+        $template = preg_replace_callback(
+            '#@extends\(([^)]+)\)#',
+            function ($matches) {
             return '<?php $this->extends('.$matches[1].'); ?>';
-        },$template);
+        },
+            $template
+        );
 
         // replace `if(...):` with `@id`
-        $template = preg_replace_callback('#@if\(([^)]+)\)#',
-        function($matches){
+        $template = preg_replace_callback(
+            '#@if\(([^)]+)\)#',
+            function ($matches) {
             return '<?php if('.$matches[1].'): ?>';
-        }, $template);
+        },
+            $template
+        );
 
         // replace `@endif` with `endif`
-        $template = preg_replace_callback('#@endif#', function($matches) {
-        return '<?php endif; ?>';
+        $template = preg_replace_callback('#@endif#', function ($matches) {
+            return '<?php endif; ?>';
         }, $template);
 
         // replace `{{ ... }}` with `print $this->escape(...)`
-        $template = preg_replace_callback('#\{\{([^}]+)\}\}#', function($matches) {
+        $template = preg_replace_callback('#\{\{([^}]+)\}\}#', function ($matches) {
             return '<?php print $this->escape(' . $matches[1] . '); ?>';
         }, $template);
 
         // replace `{!! ... !!}` with `print ...`
-        $template = preg_replace_callback('#\{!!([^}]+)!!\}#',
-        function($matches) {
-        return '<?php print ' . $matches[1] . '; ?>';
-        }, $template);
+        $template = preg_replace_callback(
+            '#\{!!([^}]+)!!\}#',
+            function ($matches) {
+            return '<?php print ' . $matches[1] . '; ?>';
+        },
+            $template
+        );
 
-                // replace `@***(...)` with `$this->***(...)`
-        $template = preg_replace_callback('#@([^(]+)\(([^)]+)\)#',
-        function($matches) {
-        return '<?php $this->' . $matches[1] . '(' . $matches[2] . '); ?>';
-        }, $template);
-        
+        // replace `@***(...)` with `$this->***(...)`
+        $template = preg_replace_callback(
+            '#@([^(]+)\(([^)]+)\)#',
+            function ($matches) {
+            return '<?php $this->' . $matches[1] . '(' . $matches[2] . '); ?>';
+        },
+            $template
+        );
+
 
         return $template;
     }

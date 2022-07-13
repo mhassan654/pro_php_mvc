@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Framework\Database\Migration;
-
 
 abstract class Field
 {
@@ -19,5 +17,4 @@ abstract class Field
         $this->nullable = true;
         return $this;
     }
-
 }
