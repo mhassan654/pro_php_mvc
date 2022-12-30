@@ -1,11 +1,9 @@
 <?php
 
-
 namespace Framework\View\Engine;
 
 use Framework\View\View;
 use Framework\View\Manager;
-
 
 interface Engine
 {

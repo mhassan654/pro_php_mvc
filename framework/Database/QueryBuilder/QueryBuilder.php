@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Framework\Database\QueryBuilder;
-
 
 use Framework\Database\Connection\Connection;
 use Framework\Database\Exception\QueryException;
@@ -11,12 +9,12 @@ use Pdo;
 
 abstract class QueryBuilder
 {
-
     protected string $type;
     protected string $columns;
     protected string $table;
     protected int $limit;
     protected int $offset;
+    protected array $wheres =[];
 
     /**
      * Get the underlying Connection instance for this query
@@ -29,9 +27,22 @@ abstract class QueryBuilder
     public function all(): array
     {
         $statement = $this->prepare();
-        $statement->execute();
+        $statement->execute($this->getWhereValues());
 
         return $statement->fetchAll(Pdo::FETCH_ASSOC);
+    }
+
+    protected function getWhereValues():array{
+        $values =[];
+        if(count($this->wheres) === 0){
+            return $values;
+        }
+
+        foreach($this->wheres as $where){
+            $values[$where[0]] = $where[2];
+        }
+
+        return $values;
     }
 
     public function insert(array $columns, array $values): int
@@ -51,7 +62,8 @@ abstract class QueryBuilder
         $query = '';
         if ($this->type === 'SELECT') :
             $query = $this->compileSelect($query);
-            $query = $this->compileLimit($query);
+            $query = $this->compileWheres($query);
+        $query = $this->compileLimit($query);
         endif;
 
         if ($this->type === 'insert') {
@@ -96,14 +108,43 @@ abstract class QueryBuilder
         return $query;
     }
 
+    protected function compileWheres(string $query):string
+    {
+        if(count($this->wheres) === 0){
+            return $query;
+        }
+
+        $query .='WHERE';
+
+        foreach ($this->wheres  as $i => $where) {
+            if($i > 0){
+                $query .= ', ';
+            }
+
+            [$column, $comparator, $value]=$where;
+
+            $query .= " {$column} {$comparator} : {$column}";
+        }
+
+        return $query;
+    }
+
     /**
      * Fetch the first row matching the current query
      */
-    public function first(): array
+    public function first()
+    // public function first(): array
     {
         $statement = $this->take(1)->prepare();
-        $statement->execute();
-        return $statement->fetchAll(Pdo::FETCH_ASSOC);
+        $statement->execute($this->getWhereValues());
+
+        $result =  $statement->fetchAll(Pdo::FETCH_ASSOC);
+
+        if (count($result) ===1) {
+            return $result[0];
+        }
+
+        return null;
     }
 
     /**
@@ -147,8 +188,10 @@ abstract class QueryBuilder
     private function compileInsert(string $query): string
     {
         $joinedColumns = join(',', $this->columns);
-        $joinedPlaceholders = join(', ', array_map(fn($column) => ":{$column}",
-            (array)$this->columns));
+        $joinedPlaceholders = join(', ', array_map(
+            fn ($column) => ":{$column}",
+            (array)$this->columns
+        ));
         $query .= " INSERT INTO {$this->table} ({$joinedColumns}) VALUES
                 ({$joinedPlaceholders})";
         return $query;

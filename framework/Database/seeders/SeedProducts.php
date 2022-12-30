@@ -22,13 +22,11 @@ This is the rocket you want...',
             ],
         ];
 
-        foreach ($products as $product)
-        {
+        foreach ($products as $product) {
             $connection
                 ->query()
                 ->from('products')
                 ->insert(['name', 'description'], $product);
         }
     }
-
 }

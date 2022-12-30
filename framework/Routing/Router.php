@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Framework\Routing;
 
 use Exception;
@@ -14,7 +13,7 @@ class Router
     protected array $errorHandler = [];
     protected string $method;
     protected string $path;
-    protected  $handler;
+    protected $handler;
     protected ?string $name = null;
     protected array $parameters = [];
     protected Route $current;
@@ -50,7 +49,7 @@ class Router
                 //remove any optional parameters not provided
                 $path = preg_replace('#{[^}]+}#', '', $path);
 
-                // we should think about warnign if a requuried parameter is not 
+                // we should think about warnign if a requuried parameter is not
                 // provided...
                 return $path;
             }
@@ -89,14 +88,14 @@ class Router
             } catch (Throwable $e) {
                 if ($e instanceof ValidationException) :
                     $_SESSION['errors'] = $e->getErrors();
-                    return redirect($_SERVER['HTTP_REFERER']);
+                return redirect($_SERVER['HTTP_REFERER']);
                 endif;
 
                 if (isset($_ENV['APP_ENV']) && $_ENV['APP_ENV'] === 'dev') :
                     $whoops = new Run();
-                    $whoops->pushHandler(new PrettyPageHandler());
-                    $whoops->register();
-                    throw $e;
+                $whoops->pushHandler(new PrettyPageHandler());
+                $whoops->register();
+                throw $e;
                 endif;
 
                 return $this->dispatchError();
@@ -106,7 +105,6 @@ class Router
         // if the path is defined for a different method
         //we can throw a unique error page for it
         if (in_array($requestPath, $paths)) {
-
             return $this->dispatchNotAllowed();
         }
         return $this->dispatchNotFound();

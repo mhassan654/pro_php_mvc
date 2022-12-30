@@ -1,7 +1,7 @@
 <?php
 
-
 namespace Framework\Validation;
+
 use InvalidArgumentException;
 
 class ValidationException extends InvalidArgumentException
@@ -18,6 +18,4 @@ class ValidationException extends InvalidArgumentException
     {
         return $this->errors;
     }
-
-
 }

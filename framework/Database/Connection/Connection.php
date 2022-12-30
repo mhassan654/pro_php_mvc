@@ -1,12 +1,10 @@
 <?php
 
-
 namespace Framework\Database\Connection;
 
 use Pdo;
 use Framework\Database\Migration\Migration;
 use Framework\Database\QueryBuilder\QueryBuilder;
-
 
 abstract class Connection
 {

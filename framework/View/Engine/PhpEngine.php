@@ -1,10 +1,9 @@
 <?php
 
-
 namespace Framework\View\Engine;
-use function view;
-use Framework\View\View;
 
+use Framework\View\View;
+use function view;
 
 class PhpEngine implements Engine
 {
@@ -13,7 +12,7 @@ class PhpEngine implements Engine
     // protected ?string $layout;
     // protected string $contents;
     protected $layouts =[];
-   
+
 
     // public function render(string $path, array $data = []): string
     public function render(View $view): string
@@ -28,7 +27,7 @@ class PhpEngine implements Engine
         ob_end_clean();
 
         // if($this->layout){
-        if($layout = $this->layouts[$view->path] ?? null):
+        if ($layout = $this->layouts[$view->path] ?? null):
         // $__layout = $this->layout;
         // $this->layout = null;
         // $this->contents = $contents;
@@ -38,7 +37,7 @@ class PhpEngine implements Engine
             $view->data,
             ['contents'=>$contents],
         ));
-            return $contentsWithLayout;
+        return $contentsWithLayout;
         endif;
 
         return $contents;
@@ -58,6 +57,4 @@ class PhpEngine implements Engine
     {
         return $this->manager->useMacro($name, ...$values);
     }
-
-
 }
