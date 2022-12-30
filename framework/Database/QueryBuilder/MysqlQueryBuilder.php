@@ -24,7 +24,7 @@ class MysqlQueryBuilder extends QueryBuilder
             'host'=>'127.0.0.1',
             'port'=>'3306',
             'database'=>'promvc',
-            'password'=>'',
+            'password'=>'##%Developer123',
             'username'=>'root'];
         return new MysqlConnection($config);
     }

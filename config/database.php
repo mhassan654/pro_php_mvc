@@ -8,7 +8,7 @@ return [
         'port'=>'3306',
         'database'=>'promvc',
         'username'=>'root',
-        'password'=>'',
+        'password'=>'##%Developer123',
     ],
     'sqlite'=>[
         'type'=>'sqlite',

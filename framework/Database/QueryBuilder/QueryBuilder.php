@@ -14,6 +14,7 @@ abstract class QueryBuilder
     protected string $table;
     protected int $limit;
     protected int $offset;
+    protected array $wheres =[];
 
     /**
      * Get the underlying Connection instance for this query
@@ -26,9 +27,22 @@ abstract class QueryBuilder
     public function all(): array
     {
         $statement = $this->prepare();
-        $statement->execute();
+        $statement->execute($this->getWhereValues());
 
         return $statement->fetchAll(Pdo::FETCH_ASSOC);
+    }
+
+    protected function getWhereValues():array{
+        $values =[];
+        if(count($this->wheres) === 0){
+            return $values;
+        }
+
+        foreach($this->wheres as $where){
+            $values[$where[0]] = $where[2];
+        }
+
+        return $values;
     }
 
     public function insert(array $columns, array $values): int
@@ -48,6 +62,7 @@ abstract class QueryBuilder
         $query = '';
         if ($this->type === 'SELECT') :
             $query = $this->compileSelect($query);
+            $query = $this->compileWheres($query);
         $query = $this->compileLimit($query);
         endif;
 
@@ -93,14 +108,43 @@ abstract class QueryBuilder
         return $query;
     }
 
+    protected function compileWheres(string $query):string
+    {
+        if(count($this->wheres) === 0){
+            return $query;
+        }
+
+        $query .='WHERE';
+
+        foreach ($this->wheres  as $i => $where) {
+            if($i > 0){
+                $query .= ', ';
+            }
+
+            [$column, $comparator, $value]=$where;
+
+            $query .= " {$column} {$comparator} : {$column}";
+        }
+
+        return $query;
+    }
+
     /**
      * Fetch the first row matching the current query
      */
-    public function first(): array
+    public function first()
+    // public function first(): array
     {
         $statement = $this->take(1)->prepare();
-        $statement->execute();
-        return $statement->fetchAll(Pdo::FETCH_ASSOC);
+        $statement->execute($this->getWhereValues());
+
+        $result =  $statement->fetchAll(Pdo::FETCH_ASSOC);
+
+        if (count($result) ===1) {
+            return $result[0];
+        }
+
+        return null;
     }
 
     /**

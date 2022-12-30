@@ -2,7 +2,7 @@
 
 $requestMethod = $_SERVER['REQUEST_METHOD'] ?? 'GET';
 $requestPath = $_SERVER['REQUEST_URI'] ?? '/';
-require_once __DIR__ .'./public/index.php';
+require_once __DIR__ . '/public/index.php';
 
 // if ($requestMethod === 'GET' and $requestPath === '/') {
 //     print 'hello world';
